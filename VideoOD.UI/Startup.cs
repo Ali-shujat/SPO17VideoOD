@@ -10,6 +10,7 @@ using VideoOD.Data.Data.Entities;
 using VideoOD.Data.Repositories;
 using VideoOnDemand.Data.Data.Entities;
 using VideoOD.UI.Models.DTOModels;
+using VideoOD.Data.Services;
 
 namespace VideoOD.UI
 {
@@ -33,11 +34,12 @@ namespace VideoOD.UI
                 .AddDefaultTokenProviders();
 
             // Add application services.
-
-            services.AddSingleton<IReadRepository, MockReadRepository>();
-            //services.AddSingleton<IReadRepository, SqlReadRepository>();
-
             services.AddTransient<IEmailSender, EmailSender>();
+
+            // ADD data servicess
+            //services.AddSingleton<IReadRepository, MockReadRepository>();
+            services.AddScoped<IReadRepository, SqlReadRepository>();
+            services.AddTransient<IDbReadService, DbReadService>();
 
             services.AddMvc();
 

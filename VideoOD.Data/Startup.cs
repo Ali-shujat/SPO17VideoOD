@@ -45,7 +45,7 @@ namespace VideoOD.Data
             {
                 app.UseDeveloperExceptionPage();
             }
-            DbInitializer.RecreateDatabase(db);
+            //DbInitializer.RecreateDatabase(db);
             DbInitializer.Initialize(db);
 
             app.Run(async (context) =>
