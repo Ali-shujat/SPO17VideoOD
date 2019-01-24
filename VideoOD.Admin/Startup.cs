@@ -28,6 +28,9 @@ namespace VideoOD.Admin
                 .AddDefaultTokenProviders();
             //Add the IDbReadService service
             services.AddTransient<IDbReadService, DbReadService>();
+
+            services.AddTransient<IDbWriteService, DbWriteService>();
+
             services.AddMvc();
 
             

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOD.UI", "VideoOD.UI\Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOD.Data", "VideoOD.Data\VideoOD.Data.csproj", "{8FE3C29A-5A92-4D7F-951F-1450036AE479}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoOD.Admin", "VideoOD.Admin\VideoOD.Admin.csproj", "{D2522861-DF65-4800-8B81-5DA7E586CE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOD.Admin", "VideoOD.Admin\VideoOD.Admin.csproj", "{D2522861-DF65-4800-8B81-5DA7E586CE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

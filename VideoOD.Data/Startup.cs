@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using VideoOD.Data.Data;
 using VideoOD.Data.Data.Entities;
 using VideoOD.Data.Migrations;
+using VideoOD.Data.Services;
 
 namespace VideoOD.Data
 {
@@ -33,6 +34,8 @@ namespace VideoOD.Data
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<VODContext>()
                 .AddDefaultTokenProviders();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
