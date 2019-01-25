@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using VideoOD.Data.Data.Entities;
-using VideoOnDemand.Data.Data.Entities;
 
 namespace VideoOD.Data.Data
 {

@@ -1,6 +1,6 @@
 ﻿using VideoOD.Data.Data.Entities;
 
-namespace VideoOnDemand.Data.Data.Entities
+namespace VideoOD.Data.Data.Entities
 {
     public class UserCourse
     {

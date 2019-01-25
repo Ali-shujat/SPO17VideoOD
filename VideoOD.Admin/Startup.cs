@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using VideoOD.Data.Data;
 using VideoOD.Data.Data.Entities;
 using VideoOD.Data.Services;
+using VideoOD.Admin.Services;
 
 namespace VideoOD.Admin
 {
@@ -28,9 +29,16 @@ namespace VideoOD.Admin
                 .AddDefaultTokenProviders();
             //Add the IDbReadService service
             services.AddTransient<IDbReadService, DbReadService>();
-            services.AddMvc();
+            services.AddTransient<IDbWriteService, DbWriteService>();
+            services.AddTransient<IUserService, UserService>();
+            //services.AddMvc();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Account/Manage");
+                options.Conventions.AuthorizePage("/Account/Logout");
+            });
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

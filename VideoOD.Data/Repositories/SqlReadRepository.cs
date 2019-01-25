@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using VideoOD.Data.Data.Entities;
 using VideoOD.Data.Services;
-using VideoOnDemand.Data.Data.Entities;
 
 namespace VideoOD.Data.Repositories
 {

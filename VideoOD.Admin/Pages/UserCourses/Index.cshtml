@@ -1,0 +1,45 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@model VideoOD.Admin.Pages.UserCourses.IndexModel
+@{
+    ViewData["Title"] = "User Courses";
+}
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-md-8">
+            <h2>@ViewData["Title"]</h2>
+            <status-message message="@Model.StatusMessage" message-type="success"></status-message>
+            <page-button path="UserCourses/Create" bootstrap-style="primary" description="Create New"></page-button>
+            <page-button path="Index" bootstrap-style="warning" glyph="list-alt" description="Dashboard"></page-button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User Id</th>
+                        <th>Course ID</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CourseId)</td>
+                            <td class="button-col-width">
+                                <page-button path="UserCourses/Edit" bootstrap-style="success" glyph="pencil" id="@item.UserId" id-courseId="@item.CourseId"></page-button>
+                                <page-button path="UserCourses/Delete" bootstrap-style="danger" glyph="remove" id="@item.UserId" id-courseId="@item.CourseId"></page-button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}
+
+
+

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
-namespace VideoOnDemand.Data.Data.Entities
+namespace VideoOD.Data.Data.Entities
 {
     public class Video
     {

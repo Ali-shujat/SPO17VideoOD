@@ -128,6 +128,96 @@ namespace VideoOD.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1024);
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("InstructorId");
+
+                    b.Property<string>("MarqueeImageUrl")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(80);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstructorId");
+
+                    b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Download", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("ModuleId");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(80);
+
+                    b.Property<string>("Url")
+                        .HasMaxLength(1024);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("ModuleId");
+
+                    b.ToTable("Downloads");
+                });
+
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Instructor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1024);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(80);
+
+                    b.Property<string>("Thumbnail")
+                        .HasMaxLength(1024);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Instructors");
+                });
+
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Module", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(80);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("Modules");
+                });
+
             modelBuilder.Entity("VideoOD.Data.Data.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -179,97 +269,7 @@ namespace VideoOD.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1024);
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(255);
-
-                    b.Property<int>("InstructorId");
-
-                    b.Property<string>("MarqueeImageUrl")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(80);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InstructorId");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Download", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CourseId");
-
-                    b.Property<int>("ModuleId");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(80);
-
-                    b.Property<string>("Url")
-                        .HasMaxLength(1024);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("ModuleId");
-
-                    b.ToTable("Downloads");
-                });
-
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Instructor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(1024);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(80);
-
-                    b.Property<string>("Thumbnail")
-                        .HasMaxLength(1024);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Instructors");
-                });
-
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Module", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CourseId");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(80);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Modules");
-                });
-
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.UserCourse", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.UserCourse", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -282,7 +282,7 @@ namespace VideoOD.Data.Migrations
                     b.ToTable("UserCourses");
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Video", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Video", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -362,38 +362,38 @@ namespace VideoOD.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Course", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Course", b =>
                 {
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Instructor", "Instructor")
+                    b.HasOne("VideoOD.Data.Data.Entities.Instructor", "Instructor")
                         .WithMany("Courses")
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Download", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Download", b =>
                 {
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Course", "Course")
+                    b.HasOne("VideoOD.Data.Data.Entities.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Module", "Module")
+                    b.HasOne("VideoOD.Data.Data.Entities.Module", "Module")
                         .WithMany("Downloads")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Module", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Module", b =>
                 {
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Course", "Course")
+                    b.HasOne("VideoOD.Data.Data.Entities.Course", "Course")
                         .WithMany("Modules")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.UserCourse", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.UserCourse", b =>
                 {
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Course", "Course")
+                    b.HasOne("VideoOD.Data.Data.Entities.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -404,14 +404,14 @@ namespace VideoOD.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("VideoOnDemand.Data.Data.Entities.Video", b =>
+            modelBuilder.Entity("VideoOD.Data.Data.Entities.Video", b =>
                 {
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Course", "Course")
+                    b.HasOne("VideoOD.Data.Data.Entities.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("VideoOnDemand.Data.Data.Entities.Module", "Module")
+                    b.HasOne("VideoOD.Data.Data.Entities.Module", "Module")
                         .WithMany("Videos")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Restrict);

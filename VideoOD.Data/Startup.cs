@@ -45,6 +45,7 @@ namespace VideoOD.Data
             {
                 app.UseDeveloperExceptionPage();
             }
+            //Only use Recreate database service to empty all data in tables
             //DbInitializer.RecreateDatabase(db);
             DbInitializer.Initialize(db);
 

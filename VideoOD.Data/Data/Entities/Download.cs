@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VideoOnDemand.Data.Data.Entities
+namespace VideoOD.Data.Data.Entities
 {
     public class Download
     {

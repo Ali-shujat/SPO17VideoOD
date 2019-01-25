@@ -32,9 +32,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Dashboard</a></li>
-                </ul>*@
+            <li><a asp-page="/Index">Dashboard</a></li>
+        </ul>*@
                 @await Html.PartialAsync("_MenuPartial")
+                @await Html.PartialAsync("_AdminMenuPartial")
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
