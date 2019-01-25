@@ -28,10 +28,12 @@ namespace VideoOD.Admin
                 .AddEntityFrameworkStores<VODContext>()
                 .AddDefaultTokenProviders();
             //Add the IDbReadService service
+
             services.AddTransient<IDbReadService, DbReadService>();
             services.AddTransient<IDbWriteService, DbWriteService>();
             services.AddTransient<IUserService, UserService>();
             //services.AddMvc();
+
             services.AddMvc().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AuthorizeFolder("/Account/Manage");
