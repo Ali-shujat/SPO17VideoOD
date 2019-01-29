@@ -12,7 +12,7 @@ namespace VideoOD.Admin.Pages.Modules
     {
         private IDbReadService _dbReadService;
 
-        public IEnumerable<UserCourse> Items = new List<UserCourse>();
+        public IEnumerable<Module> Items = new List<Module>();
 
         [TempData] public string StatusMessage { get; set; }
 
@@ -23,7 +23,7 @@ namespace VideoOD.Admin.Pages.Modules
 
         public void OnGet()
         {
-            Items = _dbReadService.GetWithIncludes<UserCourse>();
+            Items = _dbReadService.GetWithIncludes<Module>();
         }
     }
 }
