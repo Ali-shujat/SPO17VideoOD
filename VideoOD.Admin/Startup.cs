@@ -27,12 +27,13 @@ namespace VideoOD.Admin
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<VODContext>()
                 .AddDefaultTokenProviders();
+
             //Add the IDbReadService service
 
             services.AddTransient<IDbReadService, DbReadService>();
             services.AddTransient<IDbWriteService, DbWriteService>();
             services.AddTransient<IUserService, UserService>();
-            //services.AddMvc();
+        
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {

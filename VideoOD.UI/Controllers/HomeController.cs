@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VideoOD.Data.Data.Entities;
-using VideoOD.Data.Repositories;
 using VideoOD.UI.Models;
 
 namespace VideoOD.UI.Controllers
