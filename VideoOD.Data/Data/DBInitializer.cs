@@ -1,24 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using VideoOD.Data.Data;
 using VideoOD.Data.Data.Entities;
 
-namespace VideoOD.Data.Migrations
+namespace VideoOD.Data.Data
 {
     public class DbInitializer
     {
-        public static void RecreateDatabase(VODContext context)
+        public static void ApplyMigrations(VODContext context, UserManager<User> userManager = null, bool seedData = false)
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
+
+            if (seedData)
+                Initialize(context, userManager);
         }
 
-        public static void Initialize(VODContext context)
+        public static void Initialize(VODContext context, UserManager<User> userManager)
         {
             var description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
             var email = "a@b.c";
             var adminRoleId = string.Empty;
             var userId = string.Empty;
+
+            var user = new User { UserName = "a@b.c", Email = "a@b.c", EmailConfirmed = true };
+            var createUserTask = Task.Run(()=> userManager.CreateAsync(user, "Pakistan123+"));
+            createUserTask.Wait();
 
             if (context.Users.Any(r => r.Email.Equals(email)))
                 userId = context.Users.First(r => r.Email.Equals(email)).Id;
